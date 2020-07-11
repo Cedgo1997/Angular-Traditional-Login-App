@@ -28,7 +28,16 @@ export class AuthService {
     return this.http.post(`${this.url}/accounts:signUp?key=${this.api_key}`, authData);
   }
 
-  logIn(user: UserModel) {}
+  logIn(user: UserModel) {
+
+    const authData = {
+      email: user.email,
+      password: user.password,
+      returnSecureToken: true,
+    };
+
+    return this.http.post(`${this.url}/accounts:signInWithPassword?key=${this.api_key}`, authData);
+  }
 
   logOut() {}
 }
