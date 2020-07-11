@@ -21,4 +21,10 @@ export class RegistroComponent implements OnInit {
    }
 
 
+   onSubmit(){
+     console.log
+     console.log(this.user)
+   }
+
+
 }
