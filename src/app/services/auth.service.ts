@@ -18,25 +18,29 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signUp(user: UserModel) {
-
     const authData = {
       email: user.email,
       password: user.password,
       returnSecureToken: true,
     };
 
-    return this.http.post(`${this.url}/accounts:signUp?key=${this.api_key}`, authData);
+    return this.http.post(
+      `${this.url}/accounts:signUp?key=${this.api_key}`,
+      authData
+    );
   }
 
   logIn(user: UserModel) {
-
     const authData = {
       email: user.email,
       password: user.password,
       returnSecureToken: true,
     };
 
-    return this.http.post(`${this.url}/accounts:signInWithPassword?key=${this.api_key}`, authData);
+    return this.http.post(
+      `${this.url}/accounts:signInWithPassword?key=${this.api_key}`,
+      authData
+    );
   }
 
   logOut() {}
