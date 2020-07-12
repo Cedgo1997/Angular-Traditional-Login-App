@@ -62,6 +62,11 @@ export class AuthService {
   private saveToken(idToken: string) {
     this.userToken = idToken;
     localStorage.setItem("token", idToken);
+
+    let now = new Date();
+    now.setSeconds(3600);
+
+    localStorage.setItem("exp", now.getTime().toString());
   }
 
   readToken() {
@@ -73,16 +78,24 @@ export class AuthService {
   }
 
   logOut() {
-
-    localStorage.removeItem('token');
-
+    localStorage.removeItem("token");
   }
 
+  isAuthenticated(): boolean {
+    if (this.userToken.length < 2) {
+      return false;
+    }
 
-  isAuthenticated():boolean {
+    const exp = Number(localStorage.getItem("exp"));
+    const now = new Date();
+    now.setTime(exp);
+
+    if (now > new Date()) {
+      return true;
+    } else {
+      return false;
+    }
+
     return this.userToken.length > 2;
   }
-
-
-
 }
