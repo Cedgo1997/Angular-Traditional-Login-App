@@ -73,4 +73,12 @@ export class AuthService {
   }
 
   logOut() {}
+
+
+  isAuthenticated():boolean {
+    return this.userToken.length > 2;
+  }
+
+
+
 }
