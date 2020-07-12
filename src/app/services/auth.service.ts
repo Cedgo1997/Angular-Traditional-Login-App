@@ -72,7 +72,11 @@ export class AuthService {
     }
   }
 
-  logOut() {}
+  logOut() {
+
+    localStorage.removeItem('token');
+
+  }
 
 
   isAuthenticated():boolean {
